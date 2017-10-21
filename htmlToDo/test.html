@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+	<input type="text" id="myInput" placeholder="Title...">
+    <button onclick="newDiv()">Click me for list</button>
+    <button onclick="newLI()">Click me for element</button>
+    
+
+<script>
+  //makes a new topic 
+
+ function newDiv() {
+  var UL = document.createElement('ul');
+  UL.id = "testUL";
+  UL.class = "topic.ul";
+    var g = document.createElement('div');
+    g.id = "list";
+    document.body.appendChild(g);
+
+    document.getElementById("list").appendChild(UL);
+
+    var p = document.createElement("p");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+    p.appendChild(t);
+    if (inputValue == '') {
+        alert("You must write something!");
+    } else {
+        document.getElementById("testUL").appendChild(p);
+    }
+
+    document.getElementById("myInput").value = "";
+
+} 
+function newLI() {
+  if(document.getElementById("list")!= null) {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+
+    li.appendChild(t);
+    if (inputValue === ''){
+      alert("ERROR");
+    }
+    else {
+      document.getElementById("testUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+  }
+}
+</script>
+
+</body>
+</html>
