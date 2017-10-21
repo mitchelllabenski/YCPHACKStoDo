@@ -21,7 +21,7 @@ body {
     font-size: 18px;
     transition: 0.2s;
     margin: 0px;
-    background-color: #ee6055;
+    background-color: #4cbb17;
     color: white;
     
     /* make the list items unselectable */
@@ -114,7 +114,7 @@ body {
   }
   /* Style the header */
   .header {
-    background-color: #f44336;
+    background-color: #4cbb17;
     padding: 30px 40px;
     color: white;
     text-align: center;
