@@ -2,13 +2,18 @@
 body {
     margin: 0;
     min-width: 250px;
+ 
   }
   
   /* Include the padding and border in an element's total width and height */
   * {
     box-sizing: border-box;
   }
-  
+  img {
+    margin-top: 5%;
+    margin-right: 5%;
+
+  }
   /* Remove margins and padding from the list */
   ul {
     margin: 0;
