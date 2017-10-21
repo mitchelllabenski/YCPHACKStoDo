@@ -1,1 +1,194 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newLI()" class="addBtn">Add</span>
+  <span onClick="newDiv()" class="addList">List</span>
+</div>
+
+<div>
+<ul id="myUL" class="topic.ul">
+<p>First List</p>
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul>
+</div>
+<!-- 
+    Creates <div>
+        <Creates UL>
+            <Creates P>
+        Goes to the other function to get 
+        <li> functions 
+
+-->
+    
+
+ 
+<script>
+
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+// move element down to the more important things- also have an edit where another layer comes up so if you mouse over it, it will allow you to add extra details about it.
+// Creates a "decend" button and appends it to each List item
+var myNodelist = document.getElementsByTagName("LI");
+for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u02C5")
+    span.className = "decend";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+} 
+
+//Creates a "ascend " button and appends it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u02c4")
+    span.className = "ascend";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+} 
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+// click on the decend button and move it another list
+var decend = document.getElementsByClassName("decend");
+var i; 
+for (i = 0; i < decend.length ; i++) {
+    decend[i].onclick = function() {
+        var div = this.parentElement;
+        
+        document.getElementById("testUL").appendChild(div);
+    }
+} 
+// click on the ascend button to move it to the other list
+var ascend = document.getElementsByClassName("ascend");
+var i; 
+for (i = ascend.length; i < 0 ; i--) {
+    ascend[i].onclick = function() {
+        var div = this.parentElement;
+        
+        document.getElementById("testUL").appendChild(div);
+    }
+} 
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+//Adds a new "UD" and "DIV" which allows you to bring the elements into these lists.
+//Objective is to seperate by what is most urgent to complete.
+//Assigns the UL, DIV, P. 
+var count = 0;
+    function newDiv() {
+        count = count +1;
+        var UL = document.createElement('ul');
+        UL.id = "testUL";
+        UL.class = "topic.ul";
+
+        var g = document.createElement('div');
+        g.id = "list";
+        document.body.appendChild(g);
+
+        document.body.appendChild(g);
+
+        document.getElementById("list").appendChild(UL);
+
+        var p = document.createElement("P");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        p.appendChild(t);
+        if (inputValue == '') {
+            alert("You must write something!");
+        }
+        else {
+            document.getElementById("testUL").appendChild(p);
+        }
+
+    document.getElementById("myInput").value = "";
+}
+//Adds a new "element" "li" 
+//Objective the LI to a UL.   
+function newLI() {
+  if(document.getElementById("list")!= null) {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+
+    li.appendChild(t);
+    if (inputValue === ''){
+      alert("ERROR");
+    }
+    else {
+      document.getElementById("testUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+    // puts descend element back into the LI
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u02C5");
+    span.className = "decend";
+    span.appendChild(txt);
+    li.appendChild(span);
+    // puts ascend element back into the topic
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u02c4");
+    span.className = "ascend";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+
+  }
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+  }
+}
+  }
+}
+    }
+
+  
+
+</script>
+
+</body>
+</html>
